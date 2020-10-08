@@ -19,6 +19,10 @@ void algorithm_3(int U[], int T[])
     U[1] = U[1] ^ U[2] ^ U[7];               //U[1]=y_1
     U[2] = U[2] ^ U[1] ^ U[4] ^ U[5] ^ U[6]; //U[2]=y_5
     T[1] = (U[1] & U[2]) ^ T[1];             //T[1]=t_9
+    
+    // In fact, we can compute U[0]=y_13, U[6]=y_16, U[1]=y_1, U[2]=y_5 in the first place.
+    // Then we can compute T[0]=(U[0] & U[6]) ^ T[0] and T[1]=(U[1] & U[2]) ^ T[1] in parallel.
+    // We maintain the above order of operation just for convenience of the reader
 
     U[0] = U[0] ^ U[1] ^ U[2] ^ U[3]; //U[0]=y_9
     U[6] = U[6] ^ U[1] ^ U[7];        //U[6]=y_11
